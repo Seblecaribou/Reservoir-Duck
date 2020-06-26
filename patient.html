@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <link rel="stylesheet" href="./src/stylesPatient.css" />
+  </head>
+
+  <body>
+    <header>
+      <a href="index.html"><img src="https://www.doctolib.fr/external_button/doctolib-white-transparent.png"/></a>
+    </header>
+    <div class="bigBar">
+      <div class="searchbar">
+        <div class="button"></div>
+      </div>
+    </div>
+    <div class="mediaNav">
+      <div id="result" class="nav">Résultats</div>
+      <div class="nav">Carte</div>
+    </div>
+    <nav>
+      <div class="filtrerpar">FILTRER PAR</div>
+      <div class="dropdown">
+        <button class="dropbtn">Disponibilité</button>
+        <div class="dropdown-content">
+          <a href="#">aujourd'hui</a>
+          <a href="#">dans les trois prochains jours</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Honoraires</button>
+        <div class="dropdown-content"></div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Motif de consultation</button>
+        <div class="dropdown-content"></div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Langues parlées</button>
+        <div class="dropdown-content"></div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Consultation vidéo</button>
+        <div class="dropdown-content"></div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Consultation à domicile</button>
+        <div class="dropdown-content">
+          <a id="dom" href="#">à domicile</a>
+        </div>
+      </div>
+    </nav>
+
+    <!--MAIN-->
+    <main id="main">
+      <div class="doc" id="docDom1">
+        <img class="docFace" src="https://i.imgur.com/nmi8Gw1.jpg" />
+        <h2>Docteur Who</h2>
+      </div>
+
+      <div class="doc" id="docDom2">
+        <img class="docFace" src="https://i.imgur.com/kFM7cmw.jpg" />
+        <h2>Docteur Who</h2>
+      </div>
+
+      <div class="doc">
+        <img class="docFace" src="https://i.imgur.com/riA6TEg.jpg" />
+        <h2>Docteur Who</h2><br>
+        <p class="consultDom">Consultation à domicile disponible</p>
+      </div>
+
+      <div class="doc">
+        <img class="docFace" src="https://i.imgur.com/9OsQSDb.jpg" />
+        <h2>Docteur Who</h2><br>
+        <p class="consultDom">Consultation à domicile disponible</p>
+      </div>
+
+      <div class="doc">
+        <img class="docFace" src="https://i.imgur.com/AMHVspQ.jpg" />
+        <h2>Docteur Who</h2><br>
+        <p class="consultDom">Consultation à domicile disponible</p>
+      </div>
+
+      <div class="doc" id="docDom3">
+        <img class="docFace" src="https://i.imgur.com/ybVlDSS.jpg" />
+        <h2>Docteur Who</h2>
+        <p></p>
+      </div>
+
+    </main>
+    <button id="query">Filtrer</button>
+    <script src="./src/medecin.js"></script>
+  </body>
+</html>

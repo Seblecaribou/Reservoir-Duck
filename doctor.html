@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Daily UI #13 | jQuery Datepicker summer vibe</title>
+  
+  <link rel="stylesheet" href="./src/stylesMeds.css">
+  <script src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" crossorigin="anonymous"></script>
+
+  <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css'>
+
+  
+</head>
+
+<body>
+      <!--modal de deplacement--> 
+      <div id="modalDeplacement">
+        <div id="modalContent">
+         
+          <label class="container">
+            <input type="checkbox" checked="checked">
+            <p >Activer le mode Déplacement</p>
+          </label>
+        
+          <div class="slidecontainer">
+            <input type="range" min="8" max="21" value="12" class="slider" id="deplacementRange"><p><span id="demo1"></span>h</p>
+          </div><hr>
+
+            <script>
+            var slider = document.getElementById("deplacementRange");
+            var output = document.getElementById("demo1");
+            output.innerHTML = slider.value;
+
+            slider.oninput = function() {
+              output.innerHTML = this.value;
+            }
+            </script>
+
+
+          
+          <p>Zone de Déplacement</p>
+          <label class="container">
+            <input type="checkbox" checked="checked">
+            <p> Selon la distance à parcourir</p>
+          </label>
+          <label class="container">
+            <input type="checkbox">
+            <p> Selon le temps de trajet</p>
+          </label>
+
+          <div class="slidecontainer">
+            <input type="range" min="0" max="100" value="10" class="slider" id="zoneRange">
+            <p><span id="demo2"></span>min</p>
+          </div>
+
+           <script>
+            var slider2 = document.getElementById("zoneRange");
+            var output2 = document.getElementById("demo2");
+            output2.innerHTML = slider2.value;
+
+            slider2.oninput = function() {
+              output2.innerHTML = this.value;
+            }
+            </script>
+
+
+          <span id="closeBtn"><button>VALIDER</button></span>
+        </div>
+      </div>
+    
+    <!-- fin modal de deplacement--> 
+  <div id="grid">
+  <header>
+    
+    <a id="linkToLanding" href="./index.html"><img class="logo" src="https://www.doctolib.fr/external_button/doctolib-white-transparent.png" alt="doctolib logo"></a>
+    
+     
+     <div class="navbar">
+      <ul class="nav-links">
+        <li class="nav-item"><a href="#">Agenda</a></li>
+        <li class="nav-item"><a href="#">Notes</a></li>
+        <li class="nav-item"><a href="#">Patient</a></li>
+        <li class="nav-item" id="btnDeplacement"><a href="#">Déplacements</a></li>
+       
+      </ul>
+      <a href="#"><i class="fas fa-user-circle fa-2x"></i></a>
+      <a href="#"><i class="fas fa-2x fa-bell"></i></a>
+     
+      </div>
+    
+  
+  </header>
+
+  <div class="leftMenu"> 
+
+    <div class='datepicker'></div>
+
+    <div class="tagsCalendar">
+      <button>Statuts</button></button>
+      <button>Motifs de consultation</button>
+    </div>
+    
+      <div class="catTitles"> 
+  
+        <ul class="dropdown-menu">
+          <li>
+            <label class="checkbox containerBox">
+              <input  type="checkbox"> Tous
+              <span class="checkmark"></span>
+            </label>
+          </li>
+        </ul>
+        <ul>
+          <li class="dropdown dropdown-menu" style="
+          padding-left: 15px;">
+                      
+                      <ul class="dropdown-menu">
+            <li><label class="checkbox containerBox"><input type="checkbox">Visite à domicile<span class="checkmark"></span></label></li>
+            <li><label class="checkbox containerBox"><input type="checkbox">Urgence<span class="checkmark"></span></label></li>
+            <li><label class="checkbox containerBox"><input type="checkbox">Renouvellement de traitement<span class="checkmark"></span></label></li>
+            <li><label class="checkbox containerBox"><input type="checkbox">Consultation d'homéopathie<span class="checkmark"></span></label></li>
+            <li><label class="checkbox containerBox"><input type="checkbox">Consultation de médecine<span class="checkmark"></span></label></li>
+                      </ul>
+                  </li>
+          </ul>
+  
+  
+      </div>
+     
+      
+      
+    
+    
+    
+    
+
+</div>
+  
+<!-- Gestion de l'agenda connecté-->
+  <main>
+  
+  
+  
+  
+  
+    <div id="calendar" class="calendar">
+  
+      <div class="agendaDiv">
+          <button class="secondary" style="align-self: flex-start; flex: 0 0 1">Today</button>
+          <div class="calendar__title" style="display: flex; justify-content: center; align-items: center">
+            <div class="icon secondary chevron_left">‹</div>
+            <h1 class="" style="flex: 1; text-align: center;"><span></span><strong>22 JUNE – 27 JUNE</strong> 2020</h1>
+            <div class="icon secondary chevron_left">›</div>
+          </div> 
+          <div style="align-self: flex-start; flex: 0 0 1"></div>
+      </header>
+      
+      <div class="outer">
+    
+      
+      <table>
+      <thead>
+        <tr>
+          <th class="headcol"></th>
+          <th>Mon, 22</th>
+          <th>Tue, 23</th>
+          <th>Wed, 24</th>
+          <th>Thu, 25</th>
+          <th>Fri, 26</th>
+          <th class="secondary">Sat, 27</th>
+          <th class="secondary">Sun, 28</th>
+        </tr>
+      </thead>
+      </table>
+    
+    <div class="wrap"> 
+      <table class="offset">
+    
+      <tbody>
+        <tr>
+          <td class="headcol"></td>
+          <td></td>
+          <td></td>
+          <td class="past"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="headcol">6:00</td>
+          <td></td>
+          <td></td>
+          <td class="past"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="headcol"></td>
+          <td></td>
+          <td></td>
+          <td class="past"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="headcol">7:00</td>
+          <td></td>
+          <td></td>
+          <td class="past"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="headcol"></td>
+          <td></td>
+          <td></td>
+          <td class="now"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="headcol">8:00</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="headcol"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>
+            <div class="event fullDay">
+              <input id="check" type="checkbox" class="checkboxA" />
+              <label for="check"></label>08:30 Visite domicile
+            </div>
+          </td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="headcol">9:00</td>
+          <td></td>
+          <td>
+            <div class="event">
+              <input id="check" type="checkbox" class="checkboxA" />
+              <label for="check"></label>09:00 V... D...
+            </div>
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="headcol"></td>
+          <td>
+            <div class="event">
+              <input id="check" type="checkbox" class="checkboxA" />
+              <label for="check"></label>09:30 K... P...
+            </div>
+          </td>
+          <td>
+            <div class="event">
+              <input id="check" type="checkbox" class="checkboxA" />
+              <label for="check"></label>09:30 R... H...
+            </div>
+          </td>
+          <td></td>
+          <td>
+            <div class="event">
+              <input id="check" type="checkbox" class="checkboxA" />
+              <label for="check"></label>09:30 M... H...
+            </div>
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="headcol">10:00</td>
+          <td>
+            <div class="event">
+              <input id="check" type="checkbox" class="checkboxA" />
+              <label for="check"></label>10:00 P... B...
+            </div>
+          </td>
+          <td>
+            <div class="event">
+              <input id="check" type="checkbox" class="checkboxA" />
+              <label for="check"></label>10:00 R... H...
+            </div>
+          </td>
+          <td>
+            <div class="event">
+              <input id="check" type="checkbox" class="checkboxA" />
+              <label for="check"></label>10:00 R... H...
+            </div>
+          </td>
+          <td>
+            <div class="event">
+              <input id="check" type="checkbox" class="checkboxA" />
+              <label for="check"></label>10:00 A... V...
+            </div>
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="headcol"></td>
+          <td>
+            <div class="event">
+              <input id="check" type="checkbox" class="checkboxA" />
+              <label for="check"></label>10:30 D... S...
+            </div>
+          </td>
+          <td></td>
+          <td>
+            <div class="event">
+              <input id="check" type="checkbox" class="checkboxA" />
+              <label for="check"></label>10:30 T... E...
+            </div>
+          </td>
+          <td>
+            <div class="event">
+              <input id="check" type="checkbox" class="checkboxA" />
+              <label for="check"></label>10:30 K... H...
+            </div>
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="headcol">11:00</td>
+          <td></td>
+          <td>
+            <div class="event">
+              <input id="check" type="checkbox" class="checkboxA" />
+              <label for="check"></label>11:00 R... H...
+            </div>
+          </td>
+          <td>
+            <div class="event">
+              <input id="check" type="checkbox" class="checkboxA" />
+              <label for="check"></label>11:00 O... M...
+            </div>
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="headcol"></td>
+          <td></td>
+          <td></td>
+          <td>
+            <div class="event">
+              <input id="check" type="checkbox" class="checkboxA" />
+              <label for="check"></label>11:30 V... J...
+            </div>
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="headcol">12:00</td>
+          <td></td>
+          <td></td>
+          <td>
+            <div class="event">
+              <input id="check" type="checkbox" class="checkboxA" />
+              <label for="check"></label>12:00 A... P...
+            </div>
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="headcol"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="headcol">13:00</td>
+          <td>
+            <div class="event">
+              <input id="check" type="checkbox" class="checkboxA" />
+              <label for="check"></label>13:00 R... H...
+            </div>
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="headcol"></td>
+          <td>
+            <div class="event">
+              <input id="check" type="checkbox" class="checkboxA" />
+              <label for="check"></label>13:30 R... H...
+            </div>
+          </td>
+          <td>
+            <div class="event">
+              <input id="check" type="checkbox" class="checkboxA" />
+              <label for="check"></label>13:30 R... H...
+            </div>
+          </td>
+          <td></td>
+          <td>
+            <div class="event">
+              <input id="check" type="checkbox" class="checkboxA" />
+              <label for="check"></label>13:30 G... G...
+            </div>
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="headcol">14:00</td>
+          <td>
+            <div class="event">
+              <input id="check" type="checkbox" class="checkboxA" />
+              <label for="check"></label>14:00 R... H...
+            </div>
+          </td>
+          <td>
+            <div class="event">
+              <input id="check" type="checkbox" class="checkboxA" />
+              <label for="check"></label>14:00 R... H...
+            </div>
+          </td>
+          <td>
+            <div class="event halfDay">
+              <input id="check" type="checkbox" class="checkboxA" />
+              <label for="check"></label>14:00 Visite domicile
+            </div>
+          </td>
+          <td>
+            <div class="event">
+              <input id="check" type="checkbox" class="checkboxA" />
+              <label for="check"></label>14:00 C... B...
+            </div>
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="headcol"></td>
+          <td></td>
+          <td>
+            <div class="event">
+              <input id="check" type="checkbox" class="checkboxA" />
+              <label for="check"></label>14:30 R... H...
+            </div>
+          </td>
+          <td></td>
+          <td>
+            <div class="event">
+              <input id="check" type="checkbox" class="checkboxA" />
+              <label for="check"></label>14:30 M... M...
+            </div>
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="headcol">15:00</td>
+          <td></td>
+          <td>
+            <div class="event">
+              <input id="check" type="checkbox" class="checkboxA" />
+              <label for="check"></label>15:00 R... H...
+            </div>
+          </td>
+          <td></td>
+          <td>
+            <div class="event">
+              <input id="check" type="checkbox" class="checkboxA" />
+              <label for="check"></label>15:00 J... B...
+            </div>
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="headcol"></td>
+          <td>
+            <div class="event">
+              <input id="check" type="checkbox" class="checkboxA" />
+              <label for="check"></label>15:30 R... H...
+            </div>
+          </td>
+          <td></td>
+          <td></td>
+          <td>
+            <div class="event">
+              <input id="check" type="checkbox" class="checkboxA" />
+              <label for="check"></label>15:30 S... T...
+            </div>
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="headcol">16:00</td>
+          <td>
+            <div class="event">
+              <input id="check" type="checkbox" class="checkboxA" />
+              <label for="check"></label>16:00 R... H...
+            </div>
+          </td>
+          <td></td>
+          <td></td>
+          <td>
+            <div class="event">
+              <input id="check" type="checkbox" class="checkboxA" />
+              <label for="check"></label>16:00 P... V...
+            </div>
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="headcol"></td>
+          <td>
+            <div class="event">
+              <input id="check" type="checkbox" class="checkboxA" />
+              <label for="check"></label>16:30 R... H...
+            </div>
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="headcol">17:00</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="headcol"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="headcol">18:00</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="headcol"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </main>
+
+
+
+  <footer>
+  
+  
+    <div class="social-network-links">
+      <a class="facebook" href="#" target="_blank" rel="noopener noreferrer"><i class="fab   fa-facebook"></i></a>
+      <a class="twitter" href="#" target="_blank" rel="noopener noreferrer"><i class="fab   fa-twitter"></i></a>
+      <a class="linkedin" href="#" target="_blank" rel="noopener noreferrer" ><i class="fab  fa-linkedin"></i></a>
+      <a class="instagram" href="#" target="_blank" rel="noopener noreferrer" ><i class="fab  fa-instagram"></i></a>
+          
+        </div>
+    <div class="bottom">
+      <div class="col-4 copy">
+        <p><strong>Copyright © 2020 Doctolib</strong>, tous droits réservés. <br>Doctolib, 54 quai Charles Pasqua, 92300 Levallois-Perret. </p>
+        <p><i>Chiffres consolidés du groupe</i><br><i>Dernière mise à jour des chiffres effectuée le 01/06/2020</i></p>
+        <p></p>
+        <p><a href="https://www.doctolib.de">Doctolib Deutschland</a></p>
+          
+        </div>
+      <div class="col-8 legal-links">
+        <p class="text-right legal_links_zone">
+          <a href="/terms">Conditions d'Utilisation</a>
+          • <a href="/terms/agreement">Politique relative à la protection des données personnelles</a> 
+          • <a href="/search-transparency">Règles de référencement</a><br><a href="http://www.conseil-national.medecin.fr/annuaire">Annuaire des médecins du CNOM</a> 
+          • <a href="http://www.ordre-chirurgiens-dentistes.fr/grand-public.html">Annuaire des chirurgiens-dentistes de l'ONCD</a>
+          <br>
+          <a href="http://www.conseil-national.medecin.fr">Ordre National des Médecins</a> 
+          • <a href="http://www.ordre-chirurgiens-dentistes.fr">Ordre National des Chirurgiens-Dentistes</a>
+            
+          </p>
+            
+          </div>
+            
+          </div>
+            
+          </div>
+  
+  
+  
+  
+  
+  
+  </footer>
+
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
+<script type="text/javascript" src="./src/script.js"></script>
+
+    
+</div>
+</body>
+</html>
